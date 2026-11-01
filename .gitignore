@@ -6,5 +6,5 @@ css.zip
 .env*.local
 .vercel/
 
-# File video >100 MB (batas GitHub/Vercel). Simpan lokal / hosting terpisah.
-video/baru-1.mp4
+# File sementara saat encode video
+*.new.mp4
