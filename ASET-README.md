@@ -7,21 +7,21 @@ Website sudah "menunggu" file-file di bawah. Slot yang filenya belum ada otomati
 
 | Taruh di | Nama file | Tampil di |
 |---|---|---|
-| `img/gallery/` | `baru-1.webp` | Galeri → "Koleksi baru" |
-| `img/gallery/` | `baru-2.webp` | Galeri → "Koleksi baru" |
-| `img/gallery/` | `baru-3.webp` | Galeri → "Koleksi baru" |
-| `img/gallery/` | `baru-4.webp` | Galeri → "Koleksi baru" |
-| `img/gallery/` | `baru-5.webp` | Galeri → "Koleksi baru" |
+| `img/gallery/` | `baru-1.jpg` | Galeri → "Koleksi baru" |
+| `img/gallery/` | `baru-2.jpg` | Galeri → "Koleksi baru" |
+| `img/gallery/` | `baru-3.jpg` | Galeri → "Koleksi baru" |
+| `img/gallery/` | `baru-4.jpg` | Galeri → "Koleksi baru" |
+| `img/gallery/` | `baru-5.jpg` | Galeri → "Koleksi baru" |
 
-**Spesifikasi:** format WebP, sisi terpanjang maksimal 1280 px, target di bawah 150 KB per foto.
+**Spesifikasi:** format JPG, sisi terpanjang maksimal 1280 px, target di bawah 150 KB per foto.
 
 Cara konversi (di komputer yang punya ImageMagick):
 
 ```bash
-magick foto-asli.jpg -resize 960x1280 -quality 78 baru-1.webp
+magick foto-asli.jpg -resize 960x1280 -quality 78 baru-1.jpg
 ```
 
-Atau pakai https://squoosh.app (pilih WebP, kualitas 75-80).
+Atau pakai https://squoosh.app (pilih JPG, kualitas 75-80).
 
 ## 2. Video baru: 8 file (masing-masing butuh 2 file: video dan poster)
 
@@ -83,14 +83,14 @@ Kalau fotonya landscape, ubah juga `width` dan `height` di tag `<img>`-nya sesua
 
 | Path | Isi |
 |---|---|
-| `img/profile.jpg` dan `img/profile.webp` | Foto profil di bagian "Tentang saya" |
+| `img/profile.jpg` dan `img/profile.jpg` | Foto profil di bagian "Tentang saya" |
 | `img/logo-upnvj.png` | **Belum ada.** Taruh logo UPNVJ (PNG latar transparan, tinggi sekitar 96 px) di sini. Muncul otomatis di hero |
 | `img/og-image.jpg` | Gambar preview saat link dibagikan (1200x630) |
 | `img/favicon.svg` | Ikon tab browser |
-| `img/gallery/*.webp` | 13 foto galeri yang sudah ada |
+| `img/gallery/*.jpg` | 13 foto galeri yang sudah ada |
 | `video/momen-1` sampai `momen-7` (`.mp4` + `.jpg`) | 7 video yang sudah ada |
 
 ## 5. Ringkasan jumlah
 
-- Foto baru: 5 (`img/gallery/baru-1.webp` ... `baru-5.webp`)
+- Foto baru: 5 (`img/gallery/baru-1.jpg` ... `baru-5.jpg`)
 - Video baru: 8 (`video/baru-1.mp4` ... `baru-8.mp4`, plus 8 poster `.jpg`)
