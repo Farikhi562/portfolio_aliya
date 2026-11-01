@@ -1,0 +1,10 @@
+# Arsip/backup lokal, tidak perlu di repo
+css.zip
+
+# Kredensial & konfigurasi lokal
+.env.local
+.env*.local
+.vercel/
+
+# File video >100 MB (batas GitHub/Vercel). Simpan lokal / hosting terpisah.
+video/baru-1.mp4

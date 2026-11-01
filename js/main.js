@@ -189,3 +189,68 @@
     scene.style.setProperty('--px', 0); scene.style.setProperty('--py', 0);
   });
 })();
+
+// Sembunyikan slot aset yang filenya belum ada (foto/video baru), termasuk judul grup yang jadi kosong
+(function () {
+  function tidy() {
+    document.querySelectorAll('.gallery').forEach(function (g) {
+      if (g.querySelector('.g-item')) return;
+      var t = g.previousElementSibling;
+      if (t && t.classList.contains('gal-title')) t.remove();
+      g.remove();
+    });
+  }
+  document.addEventListener('error', function (e) {
+    var el = e.target;
+    if (!el || !el.closest) return;
+    var item = el.closest('.g-item, .videos figure');
+    if (!item) return;
+    item.remove();
+    tidy();
+  }, true);
+})();
+
+// Cek poster video: kalau file poster tidak ada, sembunyikan slot videonya
+(function () {
+  document.querySelectorAll('.videos video[poster]').forEach(function (v) {
+    var probe = new Image();
+    probe.onerror = function () {
+      var fig = v.closest('figure');
+      if (fig) fig.remove();
+    };
+    probe.src = v.getAttribute('poster');
+  });
+})();
+
+// Cek file video: kalau file mp4-nya belum ada, sembunyikan slot videonya
+// (dipakai bila poster sudah ada tapi video belum di-upload)
+(function () {
+  function hide(v) { var f = v.closest('figure'); if (f) f.remove(); }
+  if (location.protocol === 'file:') return;
+  document.querySelectorAll('.videos video').forEach(function (v) {
+    var src = v.querySelector('source');
+    if (!src) return;
+    fetch(src.getAttribute('src'), { method: 'HEAD' })
+      .then(function (r) { if (r.status === 404 || r.status === 410) hide(v); })
+      .catch(function () {});
+  });
+})();
+
+// Cek foto galeri: kalau file tidak ada, sembunyikan slot dan judul grup yang kosong
+(function () {
+  document.querySelectorAll('.g-item img').forEach(function (im) {
+    var probe = new Image();
+    probe.onerror = function () {
+      var item = im.closest('.g-item');
+      if (!item) return;
+      var g = item.parentElement;
+      item.remove();
+      if (g && !g.querySelector('.g-item')) {
+        var t = g.previousElementSibling;
+        if (t && t.classList.contains('gal-title')) t.remove();
+        g.remove();
+      }
+    };
+    probe.src = im.getAttribute('src');
+  });
+})();
